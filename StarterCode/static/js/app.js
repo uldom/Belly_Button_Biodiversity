@@ -25,3 +25,4 @@ function load_dropdown_list(names) {
         dropdown.appendChild(opt);
     })
 };
+
