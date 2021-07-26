@@ -10,7 +10,7 @@ function init(data) {
     console.log(data.metadata);
     console.log(data.samples);
     load_dropdown_list(data.names);
-    build_chart('940')
+    build_chart(id)
 };
 
 // Dropdown list
