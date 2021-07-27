@@ -10,7 +10,7 @@ function init(data) {
     console.log(data.metadata);
     console.log(data.samples);
     load_dropdown_list(data.names);
-    build_chart(id)
+    build_chart('940')
 };
 
 // Dropdown list
@@ -25,4 +25,9 @@ function load_dropdown_list(names) {
         dropdown.appendChild(opt);
     })
 };
+
+// Link of optionChanged with chart
+function optionChanged (id) {
+    build_chart(id);
+}
 
