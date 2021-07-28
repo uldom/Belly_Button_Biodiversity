@@ -117,7 +117,7 @@ function build_chart(id) {
                 marker: {
                     size: topsample_values,
                     color: topotu_id,
-                    colorscale: 'amp'
+                    colorscale: 'Hot'
                 }
             };
 
