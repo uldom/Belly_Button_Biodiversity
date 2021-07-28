@@ -92,13 +92,41 @@ function build_chart(id) {
 
             // Layout for chart
             let layout = {
-                title: `Top 10 OTU for ID: ${(id)}`
-            }
+                title: {
+                    text: `<b>Top 10 OTU for ID: ${(id)}</b>`,
+                    font: {
+                        size: 14,
+                    },
+                    height: 500,
+                    width: 600
+                }
+            };
 
             // traceBar
-            var traceBar = [traceBar]
+            var traceBar = [traceBar];
 
             // Plot the chart
             Plotly.newPlot('bar', traceBar, layout);
+
+            // Bubble chart
+            var traceBubble = {
+                x: topotu_id,
+                y: topsample_values,
+                text: topotu_id_lbls,
+                mode: 'markers',
+                marker: {
+                    size: topsample_values,
+                    color: topotu_id,
+                    colorscale: 'amp'
+                }
+            };
+
+            // traceBar
+            var traceBubble = [traceBubble];
+
+            // Plot the chart
+            Plotly.newPlot('bubble', traceBubble);
+
         });
 };
+
