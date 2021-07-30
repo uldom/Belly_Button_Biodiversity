@@ -90,7 +90,7 @@ function build_chart(id) {
                 }
             }
 
-            // Layout for chart
+            // Layout for bar chart
             let layout = {
                 title: {
                     text: `<b>Top 10 OTU for ID: ${(id)}</b>`,
@@ -117,7 +117,39 @@ function build_chart(id) {
                 marker: {
                     size: topsample_values,
                     color: topotu_id,
-                    colorscale: 'Hot'
+                    colorscale: 'YlOrRd'
+                }
+            };
+
+            // Layout for bubble chart
+            let bblayout = {
+                title: {
+                    text: `<b> Samples for ID: ${(id)}</b>`,
+                    font: {
+                        size: 14,
+                    },
+                    height: 500,
+                    width: 600
+                },
+                xaxis: {
+                    title: {
+                        text: "<b> OTU ids </b>",
+                        font: {
+                            size: 14,
+                        },
+                        height: 500,
+                        width: 600
+                    },
+                },
+                yaxis: {
+                    title: {
+                        text: "<b> Sample Values </b>",
+                        font: {
+                            size: 14,
+                        },
+                        height: 500,
+                        width: 600
+                    },
                 }
             };
 
@@ -125,8 +157,52 @@ function build_chart(id) {
             var traceBubble = [traceBubble];
 
             // Plot the chart
-            Plotly.newPlot('bubble', traceBubble);
+            Plotly.newPlot('bubble', traceBubble, bblayout);
 
+            //Gauge chart 
+            let traceGauge = [
+                {
+                    domain: { x: [0, 1], y: [0, 1] },
+                    value: metadata.wfreq,
+                    title: {
+                        text: `<b> Belly Button Washing Frequency for ID: ${(id)} <br> Scrubs per Week <b><br><br> `,
+                        font: {
+                            size: 14,
+                        },
+                        height: 500,
+                        width: 600
+                    },
+                    type: "indicator",
+                    mode: "gauge+number",
+                    gauge: {
+                        axis: { range: [0, 9], tickwidth: 1, tickcolor: "darkblue" },
+                        bar: { color: 'grey' },
+                        steps: [
+                            { range: [0, 1], color: '#ffffcc' },
+                            { range: [1, 2], color: '#ffeda0' },
+                            { range: [2, 3], color: '#fed976' },
+                            { range: [3, 4], color: '#feb24c' },
+                            { range: [4, 5], color: '#fd8d3c' },
+                            { range: [5, 6], color: '#fc4e2a' },
+                            { range: [6, 7], color: '#e31a1c' },
+                            { range: [7, 8], color: '#bd0026' },
+                            { range: [8, 9], color: '#b00026' }
+                        ],
+                    }
+                }
+            ];
+            
+            var layout_gauge = { 
+                width: 600, 
+                height: 500, 
+                margin: { t: 0, b: 0 }
+             };
+            
+             Plotly.newPlot('gauge', traceGauge, layout_gauge);
         });
 };
+
+
+
+
 
