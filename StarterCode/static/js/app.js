@@ -86,7 +86,7 @@ function build_chart(id) {
                 type: 'bar',
                 orientation: 'h',
                 marker: {
-                    color: 'red'
+                    color: '#86213D'
                 }
             }
 
@@ -110,13 +110,13 @@ function build_chart(id) {
 
             // Bubble chart
             var traceBubble = {
-                x: topotu_id,
-                y: topsample_values,
-                text: topotu_id_lbls,
+                x: otu_id,
+                y: sample_values,
+                text: otu_lbl,
                 mode: 'markers',
                 marker: {
-                    size: topsample_values,
-                    color: topotu_id,
+                    size: sample_values,
+                    color: otu_id,
                     colorscale: 'YlOrRd'
                 }
             };
